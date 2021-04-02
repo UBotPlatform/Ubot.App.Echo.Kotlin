@@ -18,15 +18,9 @@ class App(private val api: UBotAppApi) : BaseUBotApp() {
 
 fun main(args: Array<String>) {
     runBlocking {
-        try {
-            UBotClientHost.hostApp(args[0], args[1], "Echo.Kotlin") { api ->
-                App(api)
-            }
-        } catch (e: Exception) {
-            println("Error occurred")
-            e.printStackTrace()
+        UBotClientHost.hostApp(args[0], args[1], "Echo.Kotlin") { api ->
+            App(api)
         }
-        println("Session ended")
-        exitProcess(0)
     }
+    exitProcess(0)
 }
